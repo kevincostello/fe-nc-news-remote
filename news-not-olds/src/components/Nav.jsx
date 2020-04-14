@@ -15,7 +15,7 @@ export default class Nav extends Component {
         <ul>
           {topics.map((topic) => {
             return (
-              <li key={topic.key}>
+              <li>
                 <Link to={`/topics/${topic.slug}`}>{topic.slug}</Link>
               </li>
             );

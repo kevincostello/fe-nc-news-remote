@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ArticleCard from "./ArticleCard";
+import * as api from "./utils/api";
 
 export default class ArticleList extends Component {
   state = {
@@ -25,11 +26,9 @@ export default class ArticleList extends Component {
         total_count: "36",
       },
     ],
-    isLoading: false,
+    isLoading: true,
   };
   render() {
-    console.log(this.props);
-
     const { articles, isLoading } = this.state;
     if (isLoading) return <p>Loading some articles......</p>;
     return (
@@ -39,5 +38,24 @@ export default class ArticleList extends Component {
         })}
       </main>
     );
+  }
+
+  fetchArticles = (slug) => {
+    api.getArticles(slug).then((articles) => {
+      this.setState({ articles, isLoading: false });
+    });
+  };
+
+  componentDidMount() {
+    const { slug } = this.props;
+    this.fetchArticles(slug);
+  }
+  componentDidUpdate(prevProps, prevState) {
+    const { slug } = this.props;
+    if (slug !== prevProps.slug) {
+      api.getArticles(slug).then((articles) => {
+        this.setState({ articles, isLoading: false });
+      });
+    }
   }
 }

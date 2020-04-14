@@ -12,6 +12,7 @@ export default function ArticleCard({
   return (
     <article>
       <h2>{article_id}</h2>
+      <h3>{topic}</h3>
       <h3>{title}</h3>
     </article>
   );
