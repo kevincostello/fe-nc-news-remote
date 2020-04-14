@@ -4,6 +4,7 @@ import "./styles/global.css";
 import { Router } from "@reach/router";
 import Nav from "./components/Nav";
 import ArticleList from "./components/ArticleList";
+import About from "./components/About";
 
 function App() {
   return (
@@ -11,6 +12,8 @@ function App() {
       <Header />
       <Nav />
       <Router>
+        <About path="/about" />
+        <ArticleList path="/" />
         <ArticleList path="/topics/:slug" />
       </Router>
     </div>

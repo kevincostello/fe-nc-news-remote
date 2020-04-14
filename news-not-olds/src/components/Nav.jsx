@@ -13,9 +13,15 @@ export default class Nav extends Component {
     return (
       <nav>
         <ul>
+          <li>
+            <Link to={"/"}>Home</Link>
+          </li>
+          <li>
+            <Link to={"/about"}>About</Link>
+          </li>
           {topics.map((topic) => {
             return (
-              <li>
+              <li key={topic.slug}>
                 <Link to={`/topics/${topic.slug}`}>{topic.slug}</Link>
               </li>
             );
