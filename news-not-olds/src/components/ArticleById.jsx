@@ -30,7 +30,7 @@ export default class ArticleById extends Component {
           </h2>
           <h3>Topic: {topic}</h3>
           <p>{body}</p>
-          <Voting votes={votes} />
+          <Voting votes={votes} id={article_id} type={"articles"} />
           <p>Comments: {comment_count}</p>
 
           <button onClick={this.viewComments}>View Comments</button>

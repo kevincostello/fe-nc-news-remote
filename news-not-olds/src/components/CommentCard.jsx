@@ -1,4 +1,5 @@
 import React from "react";
+import Voting from "./Voting";
 
 export default function CommentCard({
   comment_id,
@@ -14,7 +15,7 @@ export default function CommentCard({
         Comment by: {author} on {created_at}, Comment number: {comment_id}
       </h4>
       <p>{body}</p>
-      <p>Number of likes: {votes}</p>
+      <Voting votes={votes} id={comment_id} type={"comments"} />
     </li>
   );
 }

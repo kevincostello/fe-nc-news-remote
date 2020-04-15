@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import * as api from "./utils/api";
 
 export default class Voting extends Component {
   state = { inc_votes: 0 };
@@ -15,8 +16,10 @@ export default class Voting extends Component {
   }
 
   votesUpdate = (vote) => {
+    const { id, type } = this.props;
     this.setState((currentState) => {
       return { inc_votes: currentState.inc_votes + vote };
     });
+    api.patchVotes(type, vote, id);
   };
 }
