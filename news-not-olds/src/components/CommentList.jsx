@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import CommentCard from "./CommentCard";
+import * as api from "./utils/api";
 
 export default class CommentList extends Component {
   state = {
@@ -40,6 +41,9 @@ export default class CommentList extends Component {
   }
 
   componentDidMount() {
-    this.setState({ isLoading: false });
+    const { article_id } = this.props;
+    api.getComments(article_id).then((comments) => {
+      this.setState({ comments, isLoading: false });
+    });
   }
 }

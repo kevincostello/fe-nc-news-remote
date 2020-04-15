@@ -33,7 +33,7 @@ export default class ArticleById extends Component {
             Number of likes: {votes}, Comments: {comment_count}
           </p>
           <button>View Comments</button>
-          {showComments ? <CommentList /> : null}
+          {showComments ? <CommentList article_id={article_id} /> : null}
         </article>
       </main>
     );
