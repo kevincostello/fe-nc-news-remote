@@ -4,25 +4,7 @@ import * as api from "./utils/api";
 
 export default class CommentList extends Component {
   state = {
-    comments: [
-      {
-        comment_id: 306,
-        author: "weegembump",
-        article_id: 33,
-        votes: 0,
-        created_at: "2020-02-28T08:30:44.024Z",
-        body:
-          "When I order Salmon I want Salmon, not any old common or garden trout for me! Only the best will do!",
-      },
-      {
-        comment_id: 305,
-        author: "weegembump",
-        article_id: 33,
-        votes: 0,
-        created_at: "2020-02-28T08:29:07.051Z",
-        body: "This will work!",
-      },
-    ],
+    comments: [],
     isLoading: true,
   };
   render() {
