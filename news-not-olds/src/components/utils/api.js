@@ -15,3 +15,9 @@ export const getArticles = (topic) => {
     return data.articles;
   });
 };
+
+export const getArticle = (article_id) => {
+  return request.get(`/articles/${article_id}`).then(({ data }) => {
+    return data.article;
+  });
+};

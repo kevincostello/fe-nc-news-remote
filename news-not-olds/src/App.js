@@ -6,6 +6,7 @@ import Nav from "./components/Nav";
 import ArticleList from "./components/ArticleList";
 import About from "./components/About";
 import Footer from "./components/Footer";
+import ArticleById from "./components/ArticleById";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <About path="/about" />
         <ArticleList path="/" />
         <ArticleList path="/topics/:slug" />
+        <ArticleById path="/articles/:article_id" />
       </Router>
       <Footer />
     </div>
