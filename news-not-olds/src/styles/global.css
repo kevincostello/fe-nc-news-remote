@@ -21,3 +21,8 @@ footer {
   border: 2px solid blue;
   margin: 2px;
 }
+
+article {
+  border: 2px solid darkred;
+  margin: 2px;
+}

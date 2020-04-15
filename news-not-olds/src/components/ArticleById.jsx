@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import * as api from "./utils/api";
+import CommentList from "./CommentList";
 
 export default class ArticleById extends Component {
   state = {
     article: {},
     isLoading: true,
+    showComments: true,
   };
   render() {
-    const { article, isLoading } = this.state;
+    const { article, isLoading, showComments } = this.state;
     const {
       article_id,
       title,
@@ -30,6 +32,8 @@ export default class ArticleById extends Component {
           <p>
             Number of likes: {votes}, Comments: {comment_count}
           </p>
+          <button>View Comments</button>
+          {showComments ? <CommentList /> : null}
         </article>
       </main>
     );
