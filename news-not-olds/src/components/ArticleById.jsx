@@ -10,6 +10,7 @@ export default class ArticleById extends Component {
     showComments: false,
   };
   render() {
+    const { username } = this.props;
     const { article, isLoading, showComments } = this.state;
     const {
       article_id,
@@ -34,7 +35,9 @@ export default class ArticleById extends Component {
           <p>Comments: {comment_count}</p>
 
           <button onClick={this.viewComments}>View Comments</button>
-          {showComments ? <CommentList article_id={article_id} /> : null}
+          {showComments ? (
+            <CommentList article_id={article_id} username={username} />
+          ) : null}
         </article>
       </main>
     );

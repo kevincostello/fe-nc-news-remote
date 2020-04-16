@@ -11,12 +11,13 @@ export default function ArticleCard({
   comment_count,
 }) {
   return (
-    <Link to={`/articles/${article_id}`}>
-      <article>
-        <h2>{article_id}</h2>
-        <h3>{topic}</h3>
+    <article>
+      <h2>{article_id}</h2>
+      <h3>{topic}</h3>
+
+      <Link to={`/articles/${article_id}`}>
         <h3>{title}</h3>
-      </article>
-    </Link>
+      </Link>
+    </article>
   );
 }

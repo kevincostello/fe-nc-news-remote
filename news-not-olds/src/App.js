@@ -8,20 +8,24 @@ import About from "./components/About";
 import Footer from "./components/Footer";
 import ArticleById from "./components/ArticleById";
 
-function App() {
-  return (
-    <div className="App">
-      <Header />
-      <Nav />
-      <Router>
-        <About path="/about" />
-        <ArticleList path="/" />
-        <ArticleList path="/topics/:slug" />
-        <ArticleById path="/articles/:article_id" />
-      </Router>
-      <Footer />
-    </div>
-  );
+class App extends React.Component {
+  state = { username: "jessjelly" };
+  render() {
+    const { username } = this.state;
+    return (
+      <div className="App">
+        <Header />
+        <Nav />
+        <Router>
+          <About path="/about" />
+          <ArticleList path="/" />
+          <ArticleList path="/topics/:slug" />
+          <ArticleById path="/articles/:article_id" username={username} />
+        </Router>
+        <Footer />
+      </div>
+    );
+  }
 }
 
 export default App;

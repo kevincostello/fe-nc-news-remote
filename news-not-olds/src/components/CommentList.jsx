@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import CommentCard from "./CommentCard";
 import * as api from "./utils/api";
+import AddNewComment from "./AddNewComment";
 
 export default class CommentList extends Component {
   state = {
@@ -9,6 +10,7 @@ export default class CommentList extends Component {
   };
   render() {
     const { comments, isLoading } = this.state;
+    const { username, article_id } = this.props;
     if (isLoading) return <p>Loading comments......</p>;
     return (
       <>
@@ -18,6 +20,11 @@ export default class CommentList extends Component {
             return <CommentCard key={comment.comment_id} {...comment} />;
           })}
         </ul>
+        <AddNewComment
+          addToComments={this.addToComments}
+          username={username}
+          article_id={article_id}
+        />
       </>
     );
   }
@@ -28,4 +35,10 @@ export default class CommentList extends Component {
       this.setState({ comments, isLoading: false });
     });
   }
+
+  addToComments = (newComment) => {
+    this.setState((currentState) => {
+      return { comments: [newComment, ...currentState.comments] };
+    });
+  };
 }
