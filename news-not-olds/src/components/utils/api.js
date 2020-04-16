@@ -38,8 +38,6 @@ export const postComment = (newComment, article_id) => {
   return request
     .post(`/articles/${article_id}/comments`, newComment)
     .then(({ data }) => {
-      console.log(data);
-
       return data.comment;
     });
 };

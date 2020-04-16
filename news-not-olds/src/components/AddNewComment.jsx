@@ -2,10 +2,8 @@ import React, { Component } from "react";
 import * as api from "./utils/api";
 
 export default class AddNewComment extends Component {
-  state = { body: "This is a test" };
+  state = { username: "", body: "" };
   render() {
-    console.log(this.state);
-    const { username, addToComments } = this.props;
     return (
       <section>
         <h3>Add your comment here:</h3>
@@ -31,7 +29,7 @@ export default class AddNewComment extends Component {
     const { username, addToComments, article_id } = this.props;
     const { body } = this.state;
     api.postComment({ username, body }, article_id).then((newComment) => {
-      console.log(newComment);
+      addToComments(newComment);
     });
   };
 }
