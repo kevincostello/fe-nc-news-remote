@@ -32,7 +32,11 @@ export default class ArticleList extends Component {
   fetchArticles = (slug, sort_by, order) => {
     api.getArticles(slug, sort_by, order).then((articles) => {
       this.setState((currentState) => {
-        return { articles, isLoading: false, isSorted: !currentState.isSorted };
+        return {
+          articles,
+          isLoading: false,
+          isSorted: !currentState.isSorted,
+        };
       });
     });
   };
