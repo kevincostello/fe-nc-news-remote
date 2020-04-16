@@ -8,9 +8,13 @@ export default class Voting extends Component {
     const { inc_votes } = this.state;
     return (
       <section>
-        <button onClick={() => this.votesUpdate(1)}>Love</button>
+        <button onClick={() => this.votesUpdate(1)} hidden={inc_votes > 0}>
+          Love
+        </button>
         <p>Number of likes: {votes + inc_votes}</p>
-        <button onClick={() => this.votesUpdate(-1)}>Loathe</button>
+        <button onClick={() => this.votesUpdate(-1)} hidden={inc_votes < 0}>
+          Loathe
+        </button>
       </section>
     );
   }

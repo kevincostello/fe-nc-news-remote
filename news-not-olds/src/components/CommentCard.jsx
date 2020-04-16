@@ -12,7 +12,7 @@ export default function CommentCard({
   username,
   removeComment,
 }) {
-  const upDateComments = () => {
+  const handleClick = () => {
     api.deleteComment(comment_id).then((status) => {
       removeComment(comment_id);
     });
@@ -27,7 +27,7 @@ export default function CommentCard({
       <Voting votes={votes} id={comment_id} type={"comments"} />
       {username === author ? (
         <label>
-          <button onClick={() => upDateComments()}>Delete Comment</button>
+          <button onClick={() => handleClick()}>Delete Comment</button>
         </label>
       ) : null}
     </li>
