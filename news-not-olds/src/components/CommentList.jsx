@@ -17,7 +17,14 @@ export default class CommentList extends Component {
         <h2>Comments: </h2>
         <ul>
           {comments.map((comment) => {
-            return <CommentCard key={comment.comment_id} {...comment} />;
+            return (
+              <CommentCard
+                key={comment.comment_id}
+                {...comment}
+                username={username}
+                removeComment={this.removeComment}
+              />
+            );
           })}
         </ul>
         <AddNewComment
@@ -39,6 +46,15 @@ export default class CommentList extends Component {
   addToComments = (newComment) => {
     this.setState((currentState) => {
       return { comments: [newComment, ...currentState.comments] };
+    });
+  };
+
+  removeComment = (deletedComment) => {
+    this.setState((currentState) => {
+      const updatedComments = currentState.comments.filter(
+        (comment) => comment.comment_id !== deletedComment
+      );
+      return { comments: updatedComments };
     });
   };
 }
