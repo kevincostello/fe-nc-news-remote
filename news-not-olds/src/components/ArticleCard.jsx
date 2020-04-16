@@ -16,8 +16,12 @@ export default function ArticleCard({
       <h3>{topic}</h3>
 
       <Link to={`/articles/${article_id}`}>
-        <h3>{title}</h3>
+        <h3>
+          {title} by {author} on {created_at}
+        </h3>
       </Link>
+      <p>Votes: {votes}</p>
+      <p>Number of comments: {comment_count}</p>
     </article>
   );
 }
