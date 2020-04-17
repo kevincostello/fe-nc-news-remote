@@ -10,7 +10,12 @@ export default class AddNewComment extends Component {
         <form action="" onSubmit={this.handleSubmit}>
           <label htmlFor="">
             Type some wonderful words!
-            <input type="text" onChange={this.handleChange} name="body" />
+            <input
+              type="text"
+              onChange={this.handleChange}
+              name="body"
+              required
+            />
           </label>
 
           <button>Add New Comment</button>
@@ -28,13 +33,8 @@ export default class AddNewComment extends Component {
     event.preventDefault();
     const { username, addToComments, article_id } = this.props;
     const { body } = this.state;
-    api
-      .postComment({ username, body }, article_id)
-      .then((newComment) => {
-        addToComments(newComment);
-      })
-      .catch((err) => {
-        console.dir(err);
-      });
+    api.postComment({ username, body }, article_id).then((newComment) => {
+      addToComments(newComment);
+    });
   };
 }

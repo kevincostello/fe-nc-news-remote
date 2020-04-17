@@ -10,8 +10,7 @@ import ArticleById from "./components/ArticleById";
 import ErrorHandler from "./components/ErrorHandler";
 
 class App extends React.Component {
-  state = { username: "fred" };
-  // state = { username: "jessjelly" };
+  state = { username: "jessjelly" };
   render() {
     const { username } = this.state;
     return (
