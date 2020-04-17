@@ -2,16 +2,18 @@ import React, { Component } from "react";
 import * as api from "./utils/api";
 import CommentList from "./CommentList";
 import Voting from "./Voting";
+import ErrorHandler from "./ErrorHandler";
 
 export default class ArticleById extends Component {
   state = {
     article: {},
     isLoading: true,
     showComments: false,
+    err: null,
   };
   render() {
     const { username } = this.props;
-    const { article, isLoading, showComments } = this.state;
+    const { article, isLoading, showComments, err } = this.state;
     const {
       article_id,
       title,
@@ -23,6 +25,7 @@ export default class ArticleById extends Component {
       comment_count,
     } = article;
     if (isLoading) return <p>Loading article {this.props.article_id}......</p>;
+    if (err) return <ErrorHandler {...err} />;
     return (
       <main>
         <article>
@@ -45,9 +48,22 @@ export default class ArticleById extends Component {
 
   componentDidMount() {
     const { article_id } = this.props;
-    api.getArticle(article_id).then((article) => {
-      this.setState({ article, isLoading: false });
-    });
+    api
+      .getArticle(article_id)
+      .then((article) => {
+        this.setState({ article, isLoading: false });
+      })
+      .catch((err) => {
+        // 404 error status is in err.response.data
+        let { status, msg } = err.response.data;
+
+        // 400 error status is in err.response
+        if (!status) {
+          status = err.response.status;
+        }
+
+        this.setState({ err: { status, msg }, isLoading: false });
+      });
   }
 
   viewComments = () => {

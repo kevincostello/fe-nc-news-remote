@@ -1,16 +1,19 @@
 import React, { Component } from "react";
 import ArticleCard from "./ArticleCard";
 import * as api from "./utils/api";
+import ErrorHandler from "./ErrorHandler";
 
 export default class ArticleList extends Component {
   state = {
     articles: [],
     isLoading: true,
     isSorted: false,
+    err: null,
   };
   render() {
-    const { articles, isLoading } = this.state;
+    const { articles, isLoading, err } = this.state;
     if (isLoading) return <p>Loading some articles......</p>;
+    if (err) return <ErrorHandler {...err} />;
     return (
       <main>
         <button name="created_at" onClick={this.sortArticles}>
@@ -30,15 +33,28 @@ export default class ArticleList extends Component {
   }
 
   fetchArticles = (slug, sort_by, order) => {
-    api.getArticles(slug, sort_by, order).then((articles) => {
-      this.setState((currentState) => {
-        return {
-          articles,
-          isLoading: false,
-          isSorted: !currentState.isSorted,
-        };
+    api
+      .getArticles(slug, sort_by, order)
+      .then((articles) => {
+        this.setState((currentState) => {
+          return {
+            articles,
+            isLoading: false,
+            isSorted: !currentState.isSorted,
+          };
+        });
+      })
+      .catch((err) => {
+        // 404 error status is in err.response.data
+        let { status, msg } = err.response.data;
+
+        // 400 error status is in err.response
+        if (!status) {
+          status = err.response.status;
+        }
+
+        this.setState({ err: { status, msg }, isLoading: false });
       });
-    });
   };
 
   sortArticles = (event) => {
@@ -59,9 +75,10 @@ export default class ArticleList extends Component {
   componentDidUpdate(prevProps, prevState) {
     const { slug } = this.props;
     if (slug !== prevProps.slug) {
-      api.getArticles(slug).then((articles) => {
+      /* api.getArticles(slug).then((articles) => {
         this.setState({ articles, isLoading: false });
-      });
+      }); */
+      this.fetchArticles(slug);
     }
   }
 }

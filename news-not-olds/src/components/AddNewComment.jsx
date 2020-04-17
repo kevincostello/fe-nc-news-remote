@@ -28,8 +28,13 @@ export default class AddNewComment extends Component {
     event.preventDefault();
     const { username, addToComments, article_id } = this.props;
     const { body } = this.state;
-    api.postComment({ username, body }, article_id).then((newComment) => {
-      addToComments(newComment);
-    });
+    api
+      .postComment({ username, body }, article_id)
+      .then((newComment) => {
+        addToComments(newComment);
+      })
+      .catch((err) => {
+        console.dir(err);
+      });
   };
 }
