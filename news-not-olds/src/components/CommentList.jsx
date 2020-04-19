@@ -15,6 +15,11 @@ export default class CommentList extends Component {
     return (
       <>
         <h2>Comments: </h2>
+        <AddNewComment
+          addToComments={this.addToComments}
+          username={username}
+          article_id={article_id}
+        />
         <ul>
           {comments.map((comment) => {
             return (
@@ -27,11 +32,6 @@ export default class CommentList extends Component {
             );
           })}
         </ul>
-        <AddNewComment
-          addToComments={this.addToComments}
-          username={username}
-          article_id={article_id}
-        />
       </>
     );
   }

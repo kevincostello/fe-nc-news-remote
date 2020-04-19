@@ -15,6 +15,7 @@ export default class AddNewComment extends Component {
               onChange={this.handleChange}
               name="body"
               required
+              value={this.state.body}
             />
           </label>
 
@@ -35,6 +36,7 @@ export default class AddNewComment extends Component {
     const { body } = this.state;
     api.postComment({ username, body }, article_id).then((newComment) => {
       addToComments(newComment);
+      this.setState({ body: "" });
     });
   };
 }

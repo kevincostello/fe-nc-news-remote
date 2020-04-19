@@ -15,7 +15,7 @@ class App extends React.Component {
     const { username } = this.state;
     return (
       <div className="App">
-        <Header />
+        <Header username={username} />
         <Nav />
         <Router>
           <About path="/about" />
