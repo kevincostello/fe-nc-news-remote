@@ -16,18 +16,23 @@ export default class ArticleList extends Component {
     if (err) return <ErrorHandler {...err} />;
     return (
       <main>
-        <button name="created_at" onClick={this.sortArticles}>
-          Sort by: Created at
-        </button>
-        <button name="votes" onClick={this.sortArticles}>
-          Sort by: Votes
-        </button>
-        <button name="comment_count" onClick={this.sortArticles}>
-          Sort by: Number of comments
-        </button>
-        {articles.map((article) => {
-          return <ArticleCard key={article.article_id} {...article} />;
-        })}
+        <section className="button-group">
+          Sort by:
+          <button name="created_at" onClick={this.sortArticles}>
+            Created at
+          </button>
+          <button name="votes" onClick={this.sortArticles}>
+            Votes
+          </button>
+          <button name="comment_count" onClick={this.sortArticles}>
+            Number of comments
+          </button>
+        </section>
+        <section className="flex-container">
+          {articles.map((article) => {
+            return <ArticleCard key={article.article_id} {...article} />;
+          })}
+        </section>
       </main>
     );
   }

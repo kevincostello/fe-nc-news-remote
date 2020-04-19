@@ -19,7 +19,7 @@ export default function CommentCard({
   };
 
   return (
-    <li>
+    <li className="flex-item">
       <h4>
         Comment by: {author} on {created_at}, Comment number: {comment_id}
       </h4>

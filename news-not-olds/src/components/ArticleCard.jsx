@@ -11,7 +11,7 @@ export default function ArticleCard({
   comment_count,
 }) {
   return (
-    <article>
+    <article className="flex-item">
       <h2>{article_id}</h2>
       <h3>{topic}</h3>
 

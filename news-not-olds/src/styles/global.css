@@ -1,28 +1,81 @@
 .App {
   text-align: center;
+  border: 0px;
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  border: 0px;
+  margin: 0px;
+  padding: 0px;
 }
 
 header {
-  border: 2px solid brown;
-  margin: 2px;
+  background-color: #b8b42d;
 }
 
 nav {
-  border: 2px solid red;
-  margin: 2px;
+  background-color: #697a21;
 }
 
 main {
-  border: 2px solid green;
-  margin: 2px;
+  /* background-color: #dd403a; */
 }
 
 footer {
-  border: 2px solid blue;
-  margin: 2px;
+  background-color: #dd403a;
 }
 
-article {
-  border: 2px solid darkred;
-  margin: 2px;
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.flex-item {
+  background: #b8b42d;
+  padding: 5px;
+  width: 200px;
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 1em;
+  border-top: 10px solid #dd403a;
+}
+
+.button-group {
+  color: hsl(0% 0% 13%);
+  font-weight: 700;
+  text-align: left;
+}
+
+ul {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+li {
+  list-style-type: none;
+}
+
+.topic {
+  list-style-type: none;
+  text-decoration: none;
+  color: hsl(0% 0% 13%);
+}
+
+button {
+  background-color: #847f84;
+}
+
+.full-article {
+  background: #b8b42d;
+  padding: 5px;
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 1.2em;
+  border-top: 10px solid #dd403a;
 }

@@ -20,7 +20,7 @@ export default class CommentList extends Component {
           username={username}
           article_id={article_id}
         />
-        <ul>
+        <ul className="flex-container">
           {comments.map((comment) => {
             return (
               <CommentCard

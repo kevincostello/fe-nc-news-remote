@@ -28,7 +28,7 @@ export default class ArticleById extends Component {
     if (err) return <ErrorHandler {...err} />;
     return (
       <main>
-        <article>
+        <article className="full-article">
           <h2>
             {title} by {author} on {created_at}
           </h2>
