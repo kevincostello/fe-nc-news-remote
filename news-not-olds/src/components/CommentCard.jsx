@@ -27,7 +27,7 @@ export default function CommentCard({
       <Voting votes={votes} id={comment_id} type={"comments"} />
       {username === author ? (
         <label>
-          <button onClick={() => handleClick()}>Delete Comment</button>
+          <button onClick={handleClick}>Delete Comment</button>
         </label>
       ) : null}
     </li>

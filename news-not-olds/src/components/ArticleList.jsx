@@ -80,9 +80,6 @@ export default class ArticleList extends Component {
   componentDidUpdate(prevProps, prevState) {
     const { slug } = this.props;
     if (slug !== prevProps.slug) {
-      /* api.getArticles(slug).then((articles) => {
-        this.setState({ articles, isLoading: false });
-      }); */
       this.fetchArticles(slug);
     }
   }

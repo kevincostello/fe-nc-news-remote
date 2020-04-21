@@ -45,7 +45,5 @@ export const postComment = (newComment, article_id) => {
 };
 
 export const deleteComment = (comment_id) => {
-  return request.delete(`/comments/${comment_id}`).then(({ data }) => {
-    console.log(data);
-  });
+  return request.delete(`/comments/${comment_id}`).then(({ data }) => {});
 };
